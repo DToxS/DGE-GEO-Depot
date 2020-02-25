@@ -7,8 +7,6 @@ This is a computational pipeline designed for analyzing the raw *FASTQ* data fil
 The computational pipeline requires the following software programs:
 
 - *Bash* shell in Unix-like operating systems (e.g. Linux, MacOS, Unix)
-- *GCC* (>= v7) or *Clang* (>= v5) C++ compiler
-- *CMake* (>= v3.8)
 - *STAR* (>= v2.5.3a)
 - *featureCounts* (from *Subread* >= v1.6.2)
 - *Samtools* (>= v1.8)
