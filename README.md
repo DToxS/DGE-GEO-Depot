@@ -95,31 +95,9 @@ Before launching the computational pipeline, a directory tree with corresponding
 3. Extract the following compressed data files into corresponding directories:
    - Extract `DGE-RNAseq-Experiment-Design-[Set]-[Subset].tsv.gz` into the `Counts` directory of corresponding `[Set]` of dataset.
    - Extract `Reference-Library.tar.gz` into the `References` directory.
-   - Extract `Program-Source-Codes.tar.gz` into the `Programs` directory.
+   - Extract `Program-Source-Codes.tar.gz` into the `Programs` directory and compile the included computational program `UMI-Extraction` as instructed in the [UMI Extraction](https://github.com/DToxS/UMI-Extraction) section.
    - Extract `Differential-Comparison-Configs-[Set]-[Subset].tar.gz` into the `Configs` directory of corresponding `[Set]` of dataset.
    - Extract `Differential-Comparison-Params-[Set]-[Subset].tar.gz` into the `Params` directory of corresponding `[Set]` of dataset.
-
-## Program Compilation
-
-After `Program-Source-Codes.tar.gz` is extracted into the `Programs` directory, the source codes of a computational program that extracts the mRNA sequence reads tagged with unique UMI barcodes will be placed in the directory `RNAseq-Pipeline-Tools-Classic`. This program is written in C++ programming language and needs to be compiled into a binary executable file using *GCC* or *Clang* compiler that supports C++17 features. Since the source codes have been configured with the *CMake* build system, it becomes quite simple to build the source codes in the following a few steps:
-
-```bash
-# Create a build directory.
-mkdir $HOME/Build-RNAseq-Pipeline-Tools-Classic
-cd $HOME/Build-RNAseq-Pipeline-Tools-Classic
-# Create the build configuration files.
-cmake -DCMAKE_BUILD_TYPE=Release [RNAseq-Pipeline-Tools-Classic Source-Code Directory]
-# Build the binary excecutable.
-cmake --build .
-```
-
-Once the compilation is finished, a binary executable file `SAM-Alignment-Counter` will be generated in the `SAM-Alignment-Counter` sub-directory under `$HOME/Build-RNAseq-Pipeline-Tools-Classic`. To be able to run this program, just copy it to any location that is in the search path of the system. For example, the following command copy the program to a system directory `/usr/local/bin`:
-
-```bash
-cp $HOME/Build-RNAseq-Pipeline-Tools-Classic/SAM-Alignment-Counter/SAM-Alignment-Counter /usr/local/bin/
-```
-
-Now this custom built program is ready to be used by the shell scripts in the `DGE-GEO-Depot/Programs/Feature-Counts` directory.
 
 ## Analysis Workflow
 
